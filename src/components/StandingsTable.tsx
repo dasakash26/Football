@@ -46,8 +46,8 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
   };
 
   return (
-    <div className="mt-8">
-      <h2 className="text-2xl font-bold mb-6 text-center">
+    <div className="mt-4 sm:mt-8">
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">
         <span className="border-b-4 border-indigo-600 pb-1 text-gray-800">
           {standings.competition.name} Standings
         </span>
@@ -57,28 +57,28 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
         <table className="min-w-full bg-white">
           <thead>
             <tr className={`${colors.header} ${colors.text.light}`}>
-              <th className="py-3.5 px-4 text-left font-semibold tracking-wider text-sm">
+              <th className="py-2 sm:py-3.5 px-2 sm:px-4 text-left font-semibold tracking-wider text-xs sm:text-sm">
                 Pos
               </th>
-              <th className="py-3.5 px-4 text-left font-semibold tracking-wider text-sm">
+              <th className="py-2 sm:py-3.5 px-2 sm:px-4 text-left font-semibold tracking-wider text-xs sm:text-sm">
                 Team
               </th>
-              <th className="py-3.5 px-4 text-center font-semibold tracking-wider text-sm">
+              <th className="py-2 sm:py-3.5 px-1 sm:px-4 text-center font-semibold tracking-wider text-xs sm:text-sm">
                 MP
               </th>
-              <th className="py-3.5 px-4 text-center font-semibold tracking-wider text-sm">
+              <th className="hidden xs:table-cell py-2 sm:py-3.5 px-1 sm:px-4 text-center font-semibold tracking-wider text-xs sm:text-sm">
                 W
               </th>
-              <th className="py-3.5 px-4 text-center font-semibold tracking-wider text-sm">
+              <th className="hidden xs:table-cell py-2 sm:py-3.5 px-1 sm:px-4 text-center font-semibold tracking-wider text-xs sm:text-sm">
                 D
               </th>
-              <th className="py-3.5 px-4 text-center font-semibold tracking-wider text-sm">
+              <th className="hidden xs:table-cell py-2 sm:py-3.5 px-1 sm:px-4 text-center font-semibold tracking-wider text-xs sm:text-sm">
                 L
               </th>
-              <th className="py-3.5 px-4 text-center font-semibold tracking-wider text-sm">
+              <th className="hidden sm:table-cell py-2 sm:py-3.5 px-1 sm:px-4 text-center font-semibold tracking-wider text-xs sm:text-sm">
                 GD
               </th>
-              <th className="py-3.5 px-4 text-center font-semibold tracking-wider text-sm">
+              <th className="py-2 sm:py-3.5 px-2 sm:px-4 text-center font-semibold tracking-wider text-xs sm:text-sm">
                 Pts
               </th>
             </tr>
@@ -96,13 +96,13 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
                     positionClasses || "hover:bg-gray-50"
                   } transition-all duration-200 ease-in-out`}
                 >
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium whitespace-nowrap text-xs sm:text-base">
                     {item.position}
                   </td>
-                  <td className="py-3 px-4">
+                  <td className="py-2 sm:py-3 px-2 sm:px-4">
                     <div className="flex items-center">
                       {item.team.crest && (
-                        <div className="h-7 w-7 mr-3 flex-shrink-0 overflow-hidden rounded-full bg-gray-100 border border-gray-200">
+                        <div className="h-5 w-5 sm:h-7 sm:w-7 mr-2 sm:mr-3 flex-shrink-0 overflow-hidden rounded-full bg-gray-100 border border-gray-200">
                           <img
                             src={item.team.crest}
                             alt={`${item.team.name} crest`}
@@ -114,19 +114,27 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
                           />
                         </div>
                       )}
-                      <span className="font-medium whitespace-nowrap">
+                      <span className="font-medium whitespace-nowrap text-xs sm:text-base truncate max-w-[100px] sm:max-w-none">
                         {item.team.name}
                       </span>
                     </div>
                   </td>
-                  <td className="py-3 px-4 text-center">{item.playedGames}</td>
-                  <td className="py-3 px-4 text-center">{item.won}</td>
-                  <td className="py-3 px-4 text-center">{item.draw}</td>
-                  <td className="py-3 px-4 text-center">{item.lost}</td>
-                  <td className="py-3 px-4 text-center">
+                  <td className="py-2 sm:py-3 px-1 sm:px-4 text-center text-xs sm:text-base">
+                    {item.playedGames}
+                  </td>
+                  <td className="hidden xs:table-cell py-2 sm:py-3 px-1 sm:px-4 text-center text-xs sm:text-base">
+                    {item.won}
+                  </td>
+                  <td className="hidden xs:table-cell py-2 sm:py-3 px-1 sm:px-4 text-center text-xs sm:text-base">
+                    {item.draw}
+                  </td>
+                  <td className="hidden xs:table-cell py-2 sm:py-3 px-1 sm:px-4 text-center text-xs sm:text-base">
+                    {item.lost}
+                  </td>
+                  <td className="hidden sm:table-cell py-2 sm:py-3 px-1 sm:px-4 text-center text-xs sm:text-base">
                     {item.goalDifference}
                   </td>
-                  <td className="py-3 px-4 text-center font-bold">
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 text-center font-bold text-xs sm:text-base">
                     {item.points}
                   </td>
                 </tr>
@@ -136,10 +144,10 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
         </table>
       </div>
 
-      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-xs sm:text-sm">
+      <div className="mt-4 sm:mt-6 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-xs sm:text-sm">
         <div className="group relative">
           <div
-            className={`px-3 py-2 rounded-md text-center ${colors.champions} ${colors.text.light} shadow-sm`}
+            className={`px-2 sm:px-3 py-1 sm:py-2 rounded-md text-center ${colors.champions} ${colors.text.light} shadow-sm`}
           >
             Champions
           </div>
@@ -149,7 +157,7 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
         </div>
         <div className="group relative">
           <div
-            className={`px-3 py-2 rounded-md text-center ${colors.championsLeague} ${colors.text.light} shadow-sm`}
+            className={`px-2 sm:px-3 py-1 sm:py-2 rounded-md text-center ${colors.championsLeague} ${colors.text.light} shadow-sm`}
           >
             Champions League
           </div>
@@ -159,7 +167,7 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
         </div>
         <div className="group relative">
           <div
-            className={`px-3 py-2 rounded-md text-center ${colors.europaLeague} ${colors.text.light} shadow-sm`}
+            className={`px-2 sm:px-3 py-1 sm:py-2 rounded-md text-center ${colors.europaLeague} ${colors.text.light} shadow-sm`}
           >
             Europa League
           </div>
@@ -169,7 +177,7 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
         </div>
         <div className="group relative">
           <div
-            className={`px-3 py-2 rounded-md text-center ${colors.conferenceLeague} ${colors.text.light} shadow-sm`}
+            className={`px-2 sm:px-3 py-1 sm:py-2 rounded-md text-center ${colors.conferenceLeague} ${colors.text.light} shadow-sm`}
           >
             Conference League
           </div>
@@ -179,7 +187,7 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
         </div>
         <div className="group relative">
           <div
-            className={`px-3 py-2 rounded-md text-center ${colors.relegation} ${colors.text.light} shadow-sm`}
+            className={`px-2 sm:px-3 py-1 sm:py-2 rounded-md text-center ${colors.relegation} ${colors.text.light} shadow-sm`}
           >
             Relegation
           </div>
@@ -189,7 +197,7 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
         </div>
       </div>
 
-      <div className="mt-4 text-xs text-gray-500 text-center">
+      <div className="mt-3 sm:mt-4 text-xs text-gray-500 text-center">
         Hover over legend items for more information
       </div>
     </div>
